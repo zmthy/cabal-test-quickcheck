@@ -11,8 +11,7 @@ module Distribution.TestSuite.QuickCheck
 
     -- * QuickCheck re-export
     , module Test.QuickCheck
-    )
-    where
+    ) where
 
 ------------------------------------------------------------------------------
 import Control.Applicative ((<$>), (<|>))
@@ -26,7 +25,7 @@ import Test.QuickCheck
 -- | Test a QuickCheck property using the current arguments and the given
 -- name.
 testProperty :: Testable p => String -> p -> Test
-testProperty tname prop = Test $ testInstance tname prop stdArgs
+testProperty tname prop = Test $ testInstance tname prop stdOptions
 
 
 ------------------------------------------------------------------------------
@@ -34,7 +33,7 @@ testProperty tname prop = Test $ testInstance tname prop stdArgs
 testPropertyWithOptions :: Testable p
                         => String -> Options -> p -> Either String Test
 testPropertyWithOptions tname options prop = do
-    args <- foldM (uncurry . addToArgs) stdArgs options
+    args <- foldM (uncurry . addToArgs) stdOptions options
     let ti = testInstance tname prop args
     return $ Test ti { run = toProgress <$> quickCheckWithResult args prop }
 
@@ -130,7 +129,7 @@ qcOptions =
     [ OptionDescr "max-success" msud (int "1") $ Just "100"
     , OptionDescr "max-discard-ratio" mdrd (int "0") $ Just "10"
     , OptionDescr "max-size" msid (int "1") $ Just "100"
-    , OptionDescr "chatty" cd OptionBool $ Just "True"
+    , OptionDescr "chatty" cd OptionBool $ Just "False"
     ]
   where
     int b = OptionNumber True (Just b, Nothing)
@@ -139,4 +138,10 @@ qcOptions =
         \ giving up"
     msid = "Size to use for the biggest test cases"
     cd = "Whether to print anything"
+
+
+------------------------------------------------------------------------------
+-- | The standard QuickCheck 'Args', but with the 'chatty' option turned off.
+stdOptions :: Args
+stdOptions = stdArgs { chatty = False }
 
