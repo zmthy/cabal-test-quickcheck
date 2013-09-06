@@ -5,7 +5,8 @@
 module Distribution.TestSuite.QuickCheck
     (
     -- * Cabal testing
-      testGroup
+      Test
+    , testGroup
     , testProperty
     , testPropertyWithOptions
 
@@ -35,15 +36,22 @@ testPropertyWithOptions :: Testable p
 testPropertyWithOptions tname options prop = do
     args <- foldM (uncurry . addToArgs) stdOptions options
     let ti = testInstance tname prop args
-    return $ Test ti { run = toProgress <$> quickCheckWithResult args prop }
+    return $ Test ti { run = testRun args prop }
 
 
 ------------------------------------------------------------------------------
 -- | A test instance with the given 'Args'.
 testInstance :: Testable p => String -> p -> Args -> TestInstance
 testInstance tname prop args =
-    let ti = TestInstance (toProgress <$> quickCheckResult prop)
+    let ti = TestInstance (testRun args prop)
             tname ["QuickCheck"] qcOptions (addOption args prop ti) in ti
+
+
+------------------------------------------------------------------------------
+-- | Given QuickCheck 'Args' and the property to test, produces a Cabal
+-- testing action.
+testRun :: Testable p => Args -> p -> IO Progress
+testRun args prop = toProgress <$> quickCheckWithResult args prop
 
 
 ------------------------------------------------------------------------------
@@ -53,7 +61,7 @@ addOption :: Testable p => Args -> p -> TestInstance -> String -> String
           -> Either String TestInstance
 addOption args prop test oname value = do
     args' <- addToArgs args oname value
-    Right test { run = toProgress <$> quickCheckWithResult args' prop }
+    Right test { run = testRun args' prop }
 
 
 ------------------------------------------------------------------------------
