@@ -4,14 +4,13 @@
 -- | Joins the QuickCheck testing library with Cabal's detailed interface.
 module Distribution.TestSuite.QuickCheck
     (
-    -- * Cabal testing
-      Test
-    , testGroup
-    , testProperty
+    -- * QuickCheck testing
+      testProperty
     , testPropertyWithOptions
 
-    -- * QuickCheck re-export
-    , module Test.QuickCheck
+    -- * Re-export of Cabal's interface
+    , Test
+    , testGroup
     ) where
 
 ------------------------------------------------------------------------------
