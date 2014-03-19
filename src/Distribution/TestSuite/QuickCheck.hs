@@ -120,7 +120,7 @@ toProgress :: Result -> Progress
 toProgress result = Finished $ case result of
     Success {}           -> Pass
     GaveUp {}            -> Fail "Gave up"
-    Failure { reason }   -> Fail reason
+    Failure { output }   -> Fail output
     NoExpectedFailure {} -> Fail "Expected failure when none occurred"
 
 
