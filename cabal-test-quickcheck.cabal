@@ -1,5 +1,5 @@
 name:          cabal-test-quickcheck
-version:       0.1.0
+version:       0.1.1
 homepage:      https://github.com/zimothy/cabal-test-quickcheck
 license:       MIT
 license-file:  LICENSE
@@ -26,6 +26,18 @@ library
     base       >= 4.6.0  && < 4.7,
     Cabal      >= 1.16.0 && < 1.19,
     QuickCheck >= 2.6    && < 2.7
+
+test-suite example
+  type:        detailed-0.9
+  test-module: Example
+
+  hs-source-dirs:   test
+  default-language: Haskell2010
+
+  build-depends:
+    base  >= 4.6  && < 4.7,
+    Cabal >= 1.16 && < 1.19,
+    cabal-test-quickcheck
 
 source-repository head
   type:     git
