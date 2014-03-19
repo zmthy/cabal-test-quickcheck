@@ -1,5 +1,5 @@
 name:          cabal-test-quickcheck
-version:       0.1.0
+version:       0.2.0
 homepage:      https://github.com/zimothy/cabal-test-quickcheck
 license:       MIT
 license-file:  LICENSE
@@ -12,6 +12,12 @@ cabal-version: >=1.10
 synopsis:      QuickCheck for Cabal
 description:
   Support for QuickCheck with the 'detailed' Cabal testing interface.
+
+extra-doc-files: examples/cabal-test-quickcheck-example.cabal,
+                 examples/LICENSE,
+                 examples/README,
+                 examples/Setup.hs,
+                 examples/src/CabalQuickCheckExample.hs
 
 library
   hs-source-dirs:   src
