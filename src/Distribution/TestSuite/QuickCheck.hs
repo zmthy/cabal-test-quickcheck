@@ -14,9 +14,10 @@ module Distribution.TestSuite.QuickCheck
     ) where
 
 ------------------------------------------------------------------------------
-import Control.Applicative ((<$>), (<|>))
-import Control.Monad (foldM)
-import Data.Maybe (catMaybes)
+import Control.Applicative    ((<$>), (<|>))
+import Control.Monad          (foldM)
+import Data.List              (isSuffixOf, stripPrefix)
+import Data.Maybe             (catMaybes, fromMaybe)
 import Distribution.TestSuite hiding (Result)
 import Test.QuickCheck
 
@@ -120,8 +121,14 @@ toProgress :: Result -> Progress
 toProgress result = Finished $ case result of
     Success {}           -> Pass
     GaveUp {}            -> Fail "Gave up"
-    Failure { reason }   -> Fail reason
+    Failure { output }   -> Fail $ tidyFail output
     NoExpectedFailure {} -> Fail "Expected failure when none occurred"
+
+tidyFail :: String -> String
+tidyFail output
+    | ": \n" `isSuffixOf` suff = take (length suff - 3) suff
+    | otherwise                = filter (/= '\n') suff
+  where suff = fromMaybe output $ stripPrefix "*** Failed! " output
 
 
 ------------------------------------------------------------------------------
