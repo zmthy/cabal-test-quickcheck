@@ -24,8 +24,8 @@ library
 
   build-depends:
     base       >= 4.6.0  && < 4.7,
-    Cabal      >= 1.16.0 && < 1.19,
-    QuickCheck >= 2.6    && < 2.7
+    Cabal      >= 1.16.0 && < 1.21,
+    QuickCheck >= 2.6    && < 2.8
 
 test-suite example
   type:        detailed-0.9
