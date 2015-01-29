@@ -158,4 +158,3 @@ qcOptions =
 -- | The standard QuickCheck 'Args', but with the 'chatty' option turned off.
 stdOptions :: Args
 stdOptions = stdArgs { chatty = False }
-

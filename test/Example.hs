@@ -23,4 +23,3 @@ mayFail =
 
 neqNegation :: Int -> Bool
 neqNegation x = x /= -x
-

@@ -2,4 +2,3 @@ Support for QuickCheck with the 'detailed' Cabal testing interface.
 
 See `test/Example.hs` and the test-suite in the Cabal file for an example of
 use. Configure with the `--enable-tests` option and run `cabal test`.
-
