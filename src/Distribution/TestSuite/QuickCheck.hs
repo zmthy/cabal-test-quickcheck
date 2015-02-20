@@ -13,13 +13,12 @@ module Distribution.TestSuite.QuickCheck
     , testGroup
     ) where
 
-------------------------------------------------------------------------------
-import Control.Applicative    ((<$>), (<|>))
-import Control.Monad          (foldM)
-import Data.List              (isSuffixOf, stripPrefix)
-import Data.Maybe             (catMaybes, fromMaybe)
-import Distribution.TestSuite hiding (Result)
-import Test.QuickCheck
+import           Control.Applicative    ((<$>), (<|>))
+import           Control.Monad          (foldM)
+import           Data.List              (isSuffixOf, stripPrefix)
+import           Data.Maybe             (catMaybes, fromMaybe)
+import           Distribution.TestSuite hiding (Result)
+import           Test.QuickCheck
 
 
 ------------------------------------------------------------------------------

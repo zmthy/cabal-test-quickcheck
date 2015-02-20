@@ -1,5 +1,5 @@
 name:          cabal-test-quickcheck
-version:       0.1.3
+version:       0.1.4
 license:       MIT
 license-file:  LICENSE
 author:        Timothy Jones
@@ -27,20 +27,6 @@ library
     base       >= 4.6  && < 4.8,
     Cabal      >= 1.16 && < 1.23,
     QuickCheck >= 2.6  && < 2.8
-
-test-suite example
-  type:        detailed-0.9
-  test-module: Example
-
-  hs-source-dirs:   test
-  default-language: Haskell2010
-
-  ghc-options: -Wall -Werror
-
-  build-depends:
-    base  >= 4.6  && < 4.8,
-    Cabal >= 1.19 && < 1.23,
-    cabal-test-quickcheck
 
 source-repository head
   type:     git
