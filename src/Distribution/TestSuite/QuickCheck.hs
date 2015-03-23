@@ -118,10 +118,11 @@ validOption descr value = case optionType descr of
 -- | Converts a QuickCheck 'Result' into a Cabal 'Progress'.
 toProgress :: Result -> Progress
 toProgress result = Finished $ case result of
-    Success {}           -> Pass
-    GaveUp {}            -> Fail "Gave up"
-    Failure { output }   -> Fail $ tidyFail output
-    NoExpectedFailure {} -> Fail "Expected failure when none occurred"
+    Success {}              -> Pass
+    GaveUp {}               -> Fail "Gave up"
+    Failure { output }      -> Fail $ tidyFail output
+    NoExpectedFailure {}    -> Fail "Expected failure when none occurred"
+    InsufficientCoverage {} -> Fail "Insufficient coverage in test"
 
 tidyFail :: String -> String
 tidyFail output
