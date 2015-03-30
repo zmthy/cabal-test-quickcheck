@@ -1,4 +1,4 @@
-{-# LANGUAGE NamedFieldPuns #-}
+{-# LANGUAGE CPP, NamedFieldPuns #-}
 
 ------------------------------------------------------------------------------
 -- | Joins the QuickCheck testing library with Cabal's detailed interface.
@@ -13,7 +13,11 @@ module Distribution.TestSuite.QuickCheck
     , testGroup
     ) where
 
+#if MIN_VERSION_base(4, 8, 0)
+import           Control.Applicative    ((<|>))
+#else
 import           Control.Applicative    ((<$>), (<|>))
+#endif
 import           Control.Monad          (foldM)
 import           Data.List              (isSuffixOf, stripPrefix)
 import           Data.Maybe             (catMaybes, fromMaybe)
@@ -148,8 +152,8 @@ qcOptions =
   where
     int b = OptionNumber True (Just b, Nothing)
     msud = "Maximum number of successful test before succeeding"
-    mdrd = "Maximum number of discarded tests per successful test before \
-        \ giving up"
+    mdrd = "Maximum number of " ++
+        "discarded tests per successful test before giving up"
     msid = "Size to use for the biggest test cases"
     cd = "Whether to print anything"
 
