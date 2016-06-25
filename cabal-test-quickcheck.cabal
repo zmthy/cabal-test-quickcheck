@@ -1,12 +1,12 @@
 name:          cabal-test-quickcheck
-version:       0.1.6
+version:       0.1.7
 license:       MIT
 license-file:  LICENSE
 author:        Timothy Jones
 maintainer:    Timothy Jones <git@zmthy.io>
 homepage:      https://github.com/zmthy/cabal-test-quickcheck
 bug-reports:   https://github.com/zmthy/cabal-test-quickcheck/issues
-copyright:     (c) 2013-2015 Timothy Jones
+copyright:     (c) 2013-2016 Timothy Jones
 category:      Testing
 build-type:    Simple
 cabal-version: >= 1.10
@@ -29,7 +29,7 @@ library
 
   build-depends:
     base       >= 4.6  && < 5.0,
-    Cabal      >= 1.16 && < 1.23,
+    Cabal      >= 1.16 && < 1.25,
     QuickCheck >= 2.8  && < 2.9
 
 source-repository head
