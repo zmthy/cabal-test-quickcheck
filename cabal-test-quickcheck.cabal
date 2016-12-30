@@ -30,7 +30,7 @@ library
   build-depends:
     base       >= 4.6  && < 5.0,
     Cabal      >= 1.16 && < 1.25,
-    QuickCheck >= 2.8  && < 2.9
+    QuickCheck >= 2.8  && < 2.10
 
 source-repository head
   type:     git
