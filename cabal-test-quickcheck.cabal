@@ -34,4 +34,4 @@ library
 
 source-repository head
   type:     git
-  location: git://github.com/zmthy/cabal-test-quickcheck.git
+  location: https://github.com/zmthy/cabal-test-quickcheck
