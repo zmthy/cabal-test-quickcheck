@@ -1,4 +1,5 @@
-{-# LANGUAGE CPP, NamedFieldPuns #-}
+{-# LANGUAGE CPP            #-}
+{-# LANGUAGE NamedFieldPuns #-}
 
 ------------------------------------------------------------------------------
 -- | Joins the QuickCheck testing library with Cabal's detailed interface.
