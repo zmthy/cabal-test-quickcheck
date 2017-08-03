@@ -1,5 +1,5 @@
 name:          cabal-test-quickcheck
-version:       0.1.8
+version:       0.1.8.1
 license:       MIT
 license-file:  LICENSE
 author:        Timothy Jones
@@ -28,8 +28,8 @@ library
     Distribution.TestSuite.QuickCheck
 
   build-depends:
-    base       >= 4.6  && < 5.0,
-    Cabal      >= 1.16 && < 1.25,
+    base       >= 4.6  && < 4.11,
+    Cabal      >= 1.16 && < 2.1,
     QuickCheck >= 2.8  && < 2.11
 
 source-repository head
