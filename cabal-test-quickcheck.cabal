@@ -1,12 +1,12 @@
 name:          cabal-test-quickcheck
-version:       0.1.8.1
+version:       0.1.8.2
 license:       MIT
 license-file:  LICENSE
 author:        Timothy Jones
 maintainer:    Timothy Jones <tim@zmthy.net>
 homepage:      https://github.com/zmthy/cabal-test-quickcheck
 bug-reports:   https://github.com/zmthy/cabal-test-quickcheck/issues
-copyright:     (c) 2013-2017 Timothy Jones
+copyright:     (c) 2013-2018 Timothy Jones
 category:      Testing
 build-type:    Simple
 cabal-version: >= 1.10
@@ -28,9 +28,9 @@ library
     Distribution.TestSuite.QuickCheck
 
   build-depends:
-    base       >= 4.6  && < 4.11,
-    Cabal      >= 1.16 && < 2.1,
-    QuickCheck >= 2.8  && < 2.11
+    base       >= 4.6  && < 4.12,
+    Cabal      >= 1.16 && < 2.3,
+    QuickCheck >= 2.8  && < 2.12
 
 source-repository head
   type:     git
