@@ -127,7 +127,9 @@ toProgress result = Finished $ case result of
     GaveUp {}               -> Fail "Gave up"
     Failure { output }      -> Fail $ tidyFail output
     NoExpectedFailure {}    -> Fail "Expected failure when none occurred"
+#if !MIN_VERSION_QuickCheck(2, 12, 0)
     InsufficientCoverage {} -> Fail "Insufficient coverage in test"
+#endif
 
 tidyFail :: String -> String
 tidyFail output
