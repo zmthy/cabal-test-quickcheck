@@ -28,8 +28,8 @@ library
     Distribution.TestSuite.QuickCheck
 
   build-depends:
-    base       >= 4.6  && < 4.12,
-    Cabal      >= 1.16 && < 2.3,
+    base       >= 4.6  && < 4.13,
+    Cabal      >= 1.16 && < 2.5,
     QuickCheck >= 2.8  && < 2.12
 
 source-repository head
